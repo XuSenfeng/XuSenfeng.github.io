@@ -7,9 +7,9 @@ title: "Markdown语言操作"
 
 ##### 标记语言的使用
 
-![Image](..\myimages\1.jpg){:.shadow}
+![Image](https://xusenfeng.github.io/myimages/1.jpg){:.shadow}
 
-![Image](..\myimages\2.jpg){:.shadow}
+![Image](https://xusenfeng.github.io/myimages/2.jpg){:.shadow}
 
 
 

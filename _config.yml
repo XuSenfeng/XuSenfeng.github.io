@@ -69,7 +69,7 @@ nav:
 
 # Pagination
 gems: [jekyll-paginate,jekyll-sitemap]
-paginate: 20
+paginate: 8
 paginate_path: "page/:num/"
 
 

@@ -1,0 +1,17 @@
+---
+layout: post
+title: "大小端数据对齐size_t数"
+---
+
+# 大小端数据对齐size_t
+
+
+
+
+
+![Image](https://xusenfeng.github.io/myimages/2-6.jpg){:.shadow}
+
+![Image](https://xusenfeng.github.io/myimages/2-7.jpg){:.shadow}
+
+
+

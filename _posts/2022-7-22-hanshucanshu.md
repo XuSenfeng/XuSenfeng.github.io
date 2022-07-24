@@ -1,9 +1,0 @@
----
-layout: post
-title: "函数参数的本质"
----
-
-# 函数参数的本质
-
-![Image](https://xusenfeng.github.io/myimages/25.jpg){:.shadow}
-

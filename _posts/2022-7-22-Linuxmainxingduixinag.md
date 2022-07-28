@@ -2,7 +2,7 @@
 layout: post
 title: "Linux中的面向对象思想-封装"
 date:   2022-7-22 11:29:08 +0800
-tag: 嵌入式C语言 编程思想 Linux
+tags: 嵌入式C语言 编程思想 Linux
 ---
 
 # Linux中的面向对象思想：封装

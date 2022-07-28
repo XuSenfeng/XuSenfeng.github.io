@@ -2,7 +2,7 @@
 layout: post
 title: "C语言环境"  
 date:   2022-7-25 11:29:08 +0800
-tag: C和指针 C语言
+tags: C和指针 C语言
 ---
 
 # C语言环境

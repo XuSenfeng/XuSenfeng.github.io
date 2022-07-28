@@ -2,7 +2,7 @@
 layout: post
 title: "进程线程协程" 
 date:   2022-7-24 11:29:08 +0800
-tag: 嵌入式C语言 Linux
+tags: 嵌入式C语言 Linux
 ---
 
 # 进程线程协程

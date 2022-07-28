@@ -2,7 +2,7 @@
 layout: post
 title: "Linux相关指令"
 date:   2022-7-21 11:29:08 +0800
-tag: Linux 通用
+tags: Linux 通用
 ---
 
 ## Linux的相关指令

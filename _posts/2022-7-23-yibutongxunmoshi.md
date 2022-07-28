@@ -2,7 +2,7 @@
 layout: post
 title: "异步通讯"
 date:   2022-7-23 11:29:08 +0800
-tag: 嵌入式C语言 Linux
+tags: 嵌入式C语言 Linux
 ---
 
 # 异步通讯

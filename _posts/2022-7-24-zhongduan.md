@@ -2,7 +2,7 @@
 layout: post
 title: "中断"
 date:   2022-7-24 11:29:08 +0800
-categories: ARM_linux_C
+tag: ARM_linux_C
 ---
 
 # 中断

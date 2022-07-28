@@ -2,7 +2,7 @@
 layout: post
 title: "C语言环境"  
 date:   2022-7-25 11:29:08 +0800
-categories: C_point
+tag: C_point
 ---
 
 # C语言环境

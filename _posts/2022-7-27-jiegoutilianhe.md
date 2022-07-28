@@ -2,7 +2,7 @@
 layout: post
 title: "结构和联合《C和指针》" 
 date:   2022-7-27 11:29:08 +0800
-categories: C_point
+tag: C_point
 ---
 
 # 结构体和联合

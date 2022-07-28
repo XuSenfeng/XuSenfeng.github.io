@@ -2,7 +2,7 @@
 layout: post
 title: "字符串字符和字节《C和指针》"  
 date:   2022-7-27 11:29:08 +0800
-categories: C_point
+tag: C和指针
 ---
 
 # 字符串字符和字节

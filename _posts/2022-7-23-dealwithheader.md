@@ -2,7 +2,7 @@
 layout: post
 title: "头文件剖析" 
 date:   2022-7-23 11:29:08 +0800
-categories: ARM_linux_C
+tag: ARM_linux_C
 ---
 
 # 头文件剖析

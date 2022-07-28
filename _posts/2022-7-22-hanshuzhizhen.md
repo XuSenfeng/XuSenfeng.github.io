@@ -2,7 +2,7 @@
 layout: post
 title: "函数指针" 
 date:   2022-7-22 11:29:08 +0800
-categories: ARM_linux_C
+tag: ARM_linux_C
 ---
 
 # 函数指针

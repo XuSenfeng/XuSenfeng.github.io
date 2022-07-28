@@ -2,7 +2,7 @@
 layout: post
 title: "模块间通讯"
 date:   2022-7-23 11:29:08 +0800
-tag: ARM_linux_C
+tag: 嵌入式C语言 Linux 编程思想
 ---
 
 # 模块间通讯

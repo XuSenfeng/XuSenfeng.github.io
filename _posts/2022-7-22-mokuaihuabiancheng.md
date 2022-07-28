@@ -2,7 +2,7 @@
 layout: post
 title: "模块化编程"
 date:   2022-7-22 11:29:08 +0800
-categories: ARM_linux_C
+tag: 嵌入式C语言 编程思想
 ---
 
 # 模块化编程

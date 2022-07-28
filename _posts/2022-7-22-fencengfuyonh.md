@@ -2,7 +2,7 @@
 layout: post
 title: "代码复用分层"
 date:   2022-7-22 11:29:08 +0800
-tag: ARM_linux_C
+tag: 嵌入式C语言 编程思想
 ---
 
 # 代码复用分层

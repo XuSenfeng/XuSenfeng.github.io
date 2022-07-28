@@ -2,7 +2,7 @@
 layout: post
 title: "表达式"  
 date:   2022-7-26 11:29:08 +0800
-tag: C_point
+tag: C和指针 C语言
 ---
 
 # 表达式

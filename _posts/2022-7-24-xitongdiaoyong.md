@@ -2,7 +2,7 @@
 layout: post
 title: "系统调用"
 date:   2022-7-24 11:29:08 +0800
-tag: ARM_linux_C
+tag: 嵌入式C语言 Linux
 ---
 
 # 系统调用

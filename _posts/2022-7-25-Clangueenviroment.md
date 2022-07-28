@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "C语言环境"  
+date:   2022-7-25 11:29:08 +0800
+categories: C和指针
 ---
 
 # C语言环境

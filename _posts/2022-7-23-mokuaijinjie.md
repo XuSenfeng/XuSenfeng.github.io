@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "模块进阶"
+date:   2022-7-23 11:29:08 +0800
+categories: 嵌入式C语言
 ---
 
 # 模块进阶

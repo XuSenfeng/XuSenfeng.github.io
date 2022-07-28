@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "进程线程协程" 
+date:   2022-7-24 11:29:08 +0800
+categories: 嵌入式C语言
 ---
 
 # 进程线程协程

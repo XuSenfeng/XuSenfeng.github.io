@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "表达式"  
+date:   2022-7-26 11:29:08 +0800
+categories: C和指针
 ---
 
 # 表达式

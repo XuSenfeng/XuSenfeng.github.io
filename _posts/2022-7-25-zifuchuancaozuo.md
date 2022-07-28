@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "字符串操作" 
+date:   2022-7-25 11:29:08 +0800
+categories: C和指针
 ---
 
 # 字符串操作

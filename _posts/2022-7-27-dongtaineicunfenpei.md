@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "动态内存分配《C和指针》"  
+date:   2022-7-27 11:29:08 +0800
+categories: C和指针
 ---
 
 # 动态内存分配

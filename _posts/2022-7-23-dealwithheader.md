@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "头文件剖析" 
+date:   2022-7-23 11:29:08 +0800
+categories: 嵌入式C语言
 ---
 
 # 头文件剖析

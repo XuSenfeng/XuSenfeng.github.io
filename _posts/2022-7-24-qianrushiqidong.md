@@ -9,7 +9,7 @@ tags: 嵌入式C语言 Linux 嵌入式
 
 [存储器相关知识 (xusenfeng.github.io)](https://xusenfeng.github.io/2022/07/cunchuqi/)
 
-### 启动方式
+## 启动方式
 
 首先执行CPU芯片内部固化的一小片代码ROMCODE，初始化存储器的接口，建立存储的映射，根据CPU的引脚确定启动方式
 
@@ -32,7 +32,7 @@ CPU内部：寄存器、Cache ==> 物理实现SRAM电路复杂物力成本高
 
 外存(辅存)：磁盘、SD卡等
 
-#### 外部设备
+### 外部设备
 
 和内存相对的外部设备
 

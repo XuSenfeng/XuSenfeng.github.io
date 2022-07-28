@@ -2,7 +2,7 @@
 layout: post
 title: "操作符"  
 date:   2022-7-25 11:29:08 +0800
-categories: C和指针
+categories: C_point
 ---
 
 # 操作符

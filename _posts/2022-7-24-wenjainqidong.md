@@ -2,7 +2,7 @@
 layout: post
 title: "文件系统"
 date:   2022-7-24 11:29:08 +0800
-categories: 嵌入式C语言
+categories: ARM_linux_C
 ---
 
 # 文件系统

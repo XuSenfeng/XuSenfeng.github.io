@@ -2,7 +2,7 @@
 layout: post
 title: "二级子指针" 
 date:   2022-7-22 11:29:08 +0800
-categories: 嵌入式C语言
+categories: ARM_linux_C
 ---
 
 # 二级指针

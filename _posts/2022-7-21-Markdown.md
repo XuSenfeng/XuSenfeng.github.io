@@ -2,7 +2,7 @@
 layout: post
 title: "Markdown语言操作"
 date:   2022-7-21 11:29:08 +0800
-categories: 通用
+categories: all
 ---
 
 ## Mark Down

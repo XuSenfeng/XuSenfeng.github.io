@@ -2,7 +2,7 @@
 layout: post
 title: "字符编码"
 date:   2022-7-21 11:29:08 +0800
-categories: 通用
+categories: all
 ---
 
 # 字符编码

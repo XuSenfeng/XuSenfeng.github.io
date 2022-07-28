@@ -101,11 +101,93 @@ typedef struct NODE{
 + 中间位置
 + 起始和结束
 
+```C
+#include <stdlib.h>
+#include <stdio.h>
+typedef struct NODE{
+    struct NODE *fwd;
+    struct NODE *bwd;
+    int value;
+}Node;
+int dll_insert(Node *rootp, int value)
+{
+    Node *this;
+    Node *next;
+    Node *newnode;
+    
+    for(this = rootp; (next = this->fwd) != NULL; this = next){
+        if(next->value == value)
+            return 0;//这个值已经存在了
+        if(next->value > value)
+            break;
+    }
+    newnode = (Node *)malloc(sizeof(Node));
+    if(newnode == NULL)
+        return -1;
+    newnode->value = value;
+    if(next != NULL)
+    {
+        newnode->fwd = next;
+        if(this != rootp){//位于中间位置
+        	this->fwd = nownode;
+        	newnode->bwd = this;
+        }
+        else{//位于起始位置，并且不是结尾
+        	rootp->fwd = nownode;
+        	newnode->bwd = NULL;
+        }
+        next->bwd = newnode;
+    }
+    else
+    {
+        newnode->fwd = NULL;
+        if(this != rootp){//位于末尾位置，不是起始
+        	this->fwd = nownode;
+        	newnode->bwd = this;
+        }else
+        {//位于起始和末尾
+        	this->fwd = nownode;
+        	newnode->bwd = NULL;
+        }
+        rootp->bwd = newnode;
+    }
+	return 1;
+}
+```
+
+**代码简化**：
+
++ 把if语句之中的重复代码提取出来     **注：**提取出的代码不会影响判断代码的进行
+
++ 对现有的代码进行总结
+
+```C
+newnode->fwd = next;
+if(this != rootp)
+{
+	this->fwd = newnode;
+    newnode->bwd = this;
+}
+else{
+    root->fwd = newnode;
+    newnode->bwd = NULL;
+}
+if(next != NALL)
+    next->bwd = newnode;
+else
+    rootp->bwd = newnode;
+```
+
+写法化简
+
+```C
+newnode->fwd = next;
+this->fwd = newnode;
+newnode->bwd = this != rootp ? this :NULL;
+(next != NULL ? next : rootp) ->bwd = newnode;
+```
 
 
-
-
-# 未完待续。。。。。
 
 
 

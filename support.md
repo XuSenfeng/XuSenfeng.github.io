@@ -10,3 +10,9 @@ C语言: ANSI C、GNU C
 Linux基础
 
 python
+
+摘抄
+
+《嵌入式C语言自我修养》
+
+《C和指针》

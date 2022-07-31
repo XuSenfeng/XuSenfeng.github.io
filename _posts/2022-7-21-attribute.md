@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "__attribute__"、
+title: "attribute"
 date:   2022-7-21 11:29:08 +0800
 tags: 嵌入式C语言
 ---

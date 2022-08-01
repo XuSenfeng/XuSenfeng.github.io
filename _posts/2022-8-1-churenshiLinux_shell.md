@@ -2,7 +2,7 @@
 layout: post
 title: "初认识《Linux命令行与Shell脚本编程大全》" 
 date:   2022-8-1 11:29:08 +0800
-categories: 《Linux命令行与Shell脚本编程大全》 Linux
+tags: 《Linux命令行与Shell脚本编程大全》 Linux
 ---
 
 # 初认识

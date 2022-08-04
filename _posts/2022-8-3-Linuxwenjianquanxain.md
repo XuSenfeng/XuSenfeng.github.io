@@ -281,11 +281,18 @@ chpasswd命令能从标准输入自动读取登录名和密码对（由冒号分
 > 有些组并没有列出用户。这并不是说这些组没有成员。当一个用户在/etc/passwd文件中指定某个组作为默认组时，用户账户不会作为该组成员再出现在/etc/group文件中
 
 > ```bash
->  jiao@jiao-virtual-machine:~$ sudo usermod -G test jiao
->  76 test:x:1001:jiao   
->  
->  sudo gpasswd -d jiao test        //删除
+> jiao@jiao-virtual-machine:~$ sudo usermod -G test jiao
+> 76 test:x:1001:jiao   
 > ```
+
+### gpasswd
+
+```bash
+sudo gpasswd -a jiao test		//添加, 不改变之前的	 
+sudo gpasswd -d jiao test        //删除
+```
+
+> 添加一个或删除一个组, 不改变其他的
 
 ### 创建新组
 
@@ -311,9 +318,221 @@ test:x:1001:
 share:x:1002:jiao,test
 ```
 
+> 对于更改登录组的必须重新登录
 
+> 注意区分-g和-G, 前者修改默认组, 后者修改附加组, 但是会导致组的其他的被清空
+>
+> > sudo gpasswd -d jiao test: 不清空添加
 
+### 修改组
 
+```bash
+groupmod -n 新组名 旧组名
+groupmod -g 新的GID 旧的
+```
+
+修改组名时，GID和组成员不会变，只有组名改变。由于所有的安全权限都是基于GID的，你可以随意改变组名而不会影响文件的安全性
+
+## 理解文件权限
+
+用户是否拥有根权限保存在/etc/sudoers
+
+### 使用文件权限符
+
+```bash
+drwxr-x--- 22 jiao jiao 4096  8月  3 23:44 jiao
+drwxr-x--- 13 test test 4096  8月  3 21:21 test
+```
+
+第一个字段, 目录文件权限
+
++ -代表文件
++ d代表目录
++ l代表链接
++ c代表字符型设备
++ b代表块设备
++ n代表网络设备
+
+之后有三组字符编码
+
++ r: 可读
++ w: 可写
++ x: 可执行
+
+没有某一项权限会显示-
+
+会有三个安全级别
+
++ 对象的属主
++ 对象的属组
++ 系统其他用户
+
+### 默认文件权限
+
+```bash
+jiao@jiao-virtual-machine:~/桌面$ umask
+0002
+```
+
+>  显示默认的权限
+>
+> + 第一位代表了**粘着位**特别的安全性
+> + 后三位对应umask八进制
+> + r-4  w-2  x-1
+
+首先取得权限的八进制, 然后把这三组安全级别输出（属主、属组和其他用户）
+
+umask输出的是一个掩码, 会屏蔽掉不想授予的安全等级, 要把umask从对象的全权限之中减去, 对于文件来时是666, 对于目录是777
+
+通常umask的值会设置在/etc/profile文件之中, 有一些是设置在/etc/login.defs文件中
+
+```bash
+jiao@jiao-virtual-machine:~$ umask 022
+jiao@jiao-virtual-machine:~$ touch test2
+jiao@jiao-virtual-machine:~$ ls -la test2 
+-rw-r--r-- 1 jiao jiao 0  8月  4 12:40 test2
+```
+
+> 使用命令进行设置默认的权限, 设置的只是本人的
+
+## 改变安全性
+
+```bash
+chmod options mode file
+```
+
+> 八进制改变文件的权限
+
+```bash
+[ugoa...][[+-=][rwxXstugo...]
+```
+
++ u代表用户
++ g代表组
++ o代表其他
++ a代表上述所有
+
++ 在现有权限基础上增加权限（+）
+
++ 还是在现有权限基础上移除权限（-）
+
++ 或是将权限设置成后面的值（=）
+
+    **除了twx之外的参数**
+
++ X：如果对象是目录或者它已有执行权限，赋予执行权限。
++ s：运行时重新设置UID或GID。
++ t：保留文件或目录。
++ u：属主权限设置
++ g：属组权限设置
++ o：用户权限设置
+
+可以配合使用`o+r`拥有除了其他用户权限之外还有读权限
+
+> -R: 让权限递归的传递到文件和子目录
+>
+> 可以使用通配符
+
+### 改变所属的关系
+
+```bash
+chown options owner[.group] file
+```
+
+> 可以使用登录名或者UID来指定新的属主
+
+```bash
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ ls -l
+总用量 0
+-rw-r--r-- 1 jiao jiao 0  8月  4 14:23 test
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ sudo chown test test				//更换属主
+[sudo] jiao 的密码： 
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ ls -l
+总用量 0
+-rw-r--r-- 1 test jiao 0  8月  4 14:23 test
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ sudo chown test.share test     	//更换属主以及属组
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ ls -l
+总用量 0
+-rw-r--r-- 1 test share 0  8月  4 14:23 test
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ sudo chown .jiao test				//更换属组
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ ls -l
+总用量 0
+-rw-r--r-- 1 test jiao 0  8月  4 14:23 test
+```
+
+> -R: 递归的更改子目录以及文件
+>
+> -h: 改变文件所有符号链接文件文件的属性
+
+```bash
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ sudo chgrp share test
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ ls -l
+总用量 0
+-rw-r--r-- 1 test share 0  8月  4 14:23 test
+```
+
+> 更改组
+
+## 共享文件
+
+共享文件的方法是创建一个组, 当你创建文件的时候会把你自己的GID和UID交给文件
+
+改变其他用户所在安全组的访问权限，要么就给文件分配一个包含其他用户的新默认属组
+
+Linux还为每个文件和目录存储了3个额外的信息位。
+
++ 设置用户ID（SUID）：当文件被用户使用时，程序会以文件属主的权限运行。
++ 设置组ID（SGID）：对文件来说，程序会以文件属组的权限运行；对目录来说，目录中创建的新文件会以目录的默认属组作为默认属组。
++ 粘着位：进程结束后文件还驻留（粘着）在内存中
+
+SGID位对文件共享非常重要。启用SGID位后，你可以强制在一个共享目录下创建的新文件都属于该目录的属组，这个组也就成为了每个用户的属组
+
+SGID可通过chmod命令设置。它会加到标准3位八进制值之前（组成4位八进制值），或者在符号模式下用符号s。
+
+```bash
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ mkdir testdir
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ ls -l
+总用量 8
+-rw-r--r-- 1 jiao jiao    4  8月  4 14:42 test
+drwxrwxr-x 2 jiao jiao 4096  8月  4 15:04 testdir
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ chgrp test testdir
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ chmod g+s testdir   		//使用s添加属性
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ cd testdir
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7/testdir$ touch t1
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7/testdir$ ls -l
+总用量 0
+-rw-rw-r-- 1 jiao test 0  8月  4 15:05 t1							   //文件的组发生改变
+```
+
+八进制方式
+
+| 二进制 | 八进制 |         描述         |
+| :----: | :----: | :------------------: |
+|  000   |   0    |     所有位都清零     |
+|  001   |   1    |      粘着位置位      |
+|  010   |   2    |      SGID位置位      |
+|  011   |   3    | SGID位和粘着位都置位 |
+|  100   |   4    |      SUID位置位      |
+|  101   |   5    | SUID位和粘着位都置位 |
+|  110   |   6    | SUID位和SGID位都置位 |
+|  111   |   7    |     所有位都置位     |
+
+```bash
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ mkdir test2
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ chown .test test2			//改变所属的组
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ ls -l
+总用量 12
+-rw-r--r-- 1 jiao jiao    4  8月  4 14:42 test
+drwxrwxr-x 2 jiao test 4096  8月  4 15:12 test2
+drwxrwsr-x 3 jiao test 4096  8月  4 15:10 testdir
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ chmod 2775 test2			//设置组粘连
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7$ cd test2 
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7/test2$ touch t2		
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7/test2$ ls -l
+总用量 0
+-rw-rw-r-- 1 jiao test 0  8月  4 15:12 t2
+jiao@jiao-virtual-machine:~/桌面/linux-shell/7/test2$ 
+```
 
 
 

@@ -2,7 +2,7 @@
 layout: post
 title: "sed进阶《Linux命令行与Shell脚本编程大全》" 
 date:   2022-8-10 23:39:08 +0800
-tags: 《Linux命令行与Shell脚本编程大全》 Linux 通用 
+tags: 《Linux命令行与Shell脚本编程大全》 Linux
 ---
 
 # `sed`进阶

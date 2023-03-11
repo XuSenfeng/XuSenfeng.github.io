@@ -5,14 +5,6 @@ title: 技术支持
 
 单片机：51、stm32
 
-C语言: ANSI C、GNU C
+C语言: ANSI C、GNU C 、Linux基础、python
 
-Linux基础
-
-python
-
-摘抄
-
-《嵌入式C语言自我修养》
-
-《C和指针》
+摘抄自《嵌入式C语言自我修养》、《C和指针》、《鸟哥的linux私房菜》等
